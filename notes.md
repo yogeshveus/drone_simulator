@@ -8,3 +8,5 @@ Assumptions:
 2) The simulator need not consider the horizontal displacement, as data is random data anyway
 
 graph the data that you see
+
+Intentionally ignoring the specifics of setups and reads for electronics sensors. We can rather learn it while working with actual electronics
