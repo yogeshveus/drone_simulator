@@ -18,3 +18,6 @@ solve ordinary differential equations (ODEs) is the Runge-Kutta method (specific
 Right way to calcualte number of vlaues in array for the given x distance, would be after transforming x to t
 
 Data generated at 1m/s
+
+Important: Constant data should be used be used at the end of the simulation, and announce the coordinates
+Maybe make the drone land at the end?
