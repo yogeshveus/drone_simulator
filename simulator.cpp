@@ -1,37 +1,40 @@
-setupSensors()
-	setBotSpeed()
-getTime
+#include <stdio.h>
+#include <time.h>
 
-submitResults
+#define ARRAY_SIZE 10
 
-global start_time = -1
+time_t startTime;
 
-setupSensors:
-	start_time = sys
+void setupSensors() {
+    printf("Sensors setup.\n");
+    startTime = time(NULL);
+}
 
-setBotspeed : global botspeed = botspeed
+void setBotSpeed(int speed) {
+    printf("Bot speed set to %d.\n", speed);
+}
 
-global array[x axis ] = ultrasound time
-5 10 15 20
+unsigned int predefinedEchoTimes[ARRAY_SIZE] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+unsigned int predefinedEchoLatitude[ARRAY_SIZE] = {100, 90, 80, 90, 70, 80, 60, 70, 80, 100};
+unsigned int predefinedEchoLongitude[ARRAY_SIZE] = {110, 120, 130, 140, 150, 160, 170, 180, 190, 200};
 
-get val from arr:
- 21
- 20
-	
+unsigned int readUltrasoundEchoTime() {
+    time_t currentTime = time(NULL);
+    double elapsedTime = difftime(currentTime, startTime);
+    int index = (int)(elapsedTime / 3);
+    return predefinedEchoTimes[index % ARRAY_SIZE];
+}
 
-dense - 2000
+unsigned long int readLatitude() {
+    time_t currentTime = time(NULL);
+    double elapsedTime = difftime(currentTime, startTime);
+    int index = (int)(elapsedTime / 3);
+    return predefinedEchoLatitude[index % ARRAY_SIZE];
+}
 
-getTime:
-	if startime is -1: throw error, print
-	iso time now = sys.time()
-	current time x axis = iso time now - start_time
-    ultrasound time = array[current time x axis]
-    blocking wait (ultrasound time)
-    return ultrasound time
-
-getCurrentTime:
-    return current time x axis
-	
-submitREsults(count){
-	print pass or fail
+unsigned long int readLongitude() {
+    time_t currentTime = time(NULL);
+    double elapsedTime = difftime(currentTime, startTime);
+    int index = (int)(elapsedTime / 3);
+    return predefinedEchoLongitude[index % ARRAY_SIZE];
 }
