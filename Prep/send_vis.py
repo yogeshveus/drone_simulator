@@ -14,16 +14,14 @@ y_vals = []
 
 
 def animate():
-    global i 
-    global data
-    x = [a[0] for a in data]
-    y1 = [a[1] for a in data]
-    y2 = [a[1]*0.7 for a in data]
+    # global data
+    # x = [a[0] for a in data]
+    # y1 = [a[1] for a in data]
 
     plt.cla()
 
-    plt.plot(x, y1, label='Channel 1')
-    plt.plot(x, y2, label='Channel 2')
+    # plt.plot(x, y1, label='Channel 1')
+    plt.plot(x_vals, y_vals, label='Channel 1')
 
     plt.legend(loc='upper left')
     plt.tight_layout()
@@ -48,8 +46,10 @@ with open(FIFO, 'r') as fifo:
                 print("Writer closed")
                 break
             print('Read: "{0}"'.format(data2))
-            x, y = [int(x) for x in data2.split(" ")]
-            data.append([x, y])
+            x, y = [float(x) for x in data2.split(" ")]
+            # data.append([x, y])
+            x_vals.append(x)
+            y_vals.append(y)
             animate()
 
 # ani = FuncAnimation(plt.gcf(), animate, interval=1000)
