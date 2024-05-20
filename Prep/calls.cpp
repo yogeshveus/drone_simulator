@@ -1,4 +1,4 @@
-#include "simulator.cpp"
+#include "../simulator.cpp"
 #include <stdio.h> // Not allowed in submissions
 #include <unistd.h>
 
