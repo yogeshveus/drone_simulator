@@ -1,19 +1,34 @@
-#include "simulator.h"
-#include <stdio.h>  // Not allowed in submissions
+#include "simulator.cpp"
+#include <stdio.h> // Not allowed in submissions
+#include <unistd.h>
 
-void setup(){
+
+#define DRONE_SPEED 10  
+
+extern time_t startTime;
+
+void loop() {
+    printf("EchoTime Latitude Longitude\n");
+    while (1) {
+        unsigned int echo_time = readUltrasoundEchoTime();
+        if (echo_time == 0) break;
+        unsigned long int lat = readLatitude();
+        unsigned long int lon = readLongitude();
+        printf("%u %lu %lu\n", echo_time, lat, lon);
+        sleep(2);
+    }
+}
+
+void setup() {
     setupSensors();
-    setBotSpeed(100); // unit?
+    setBotSpeed(DRONE_SPEED); // unit?
+    printf("Setup completed.\n");
     // Reminder : Errors should arrise
 }
 
-void loop(){
-    printf("EchoTime Latitude Longitude\n")
-    while(echo_time > 0){
-        unsigned int echo_time = readUltrasoundEchoTime();
-        unsigned long int lat = readLattitude();
-        unsigned long int lon = readLongitude();
-        printf("%d %d %d\n", echo_time, lat, lon);
-    }
+int main() {
+    setup();
+    sleep(5);
+    loop();
+    return 0;
 }
-    
