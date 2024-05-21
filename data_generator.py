@@ -1,5 +1,5 @@
 import numpy as np
-from Prep import plot as c2c
+from curve_to_coordinates_ import plot as c2c
 
 np.set_printoptions(threshold=np.inf)
 
