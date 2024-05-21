@@ -15,8 +15,8 @@ void setBotSpeed(int speed) {
     printf("Bot speed set to %d.\n", speed);
 }
 
-double *predefinedEchoTimes = y;
-double *predefinedEchoLatitude = x;
+const double *predefinedEchoTimes = y;
+const double *predefinedEchoLatitude = x;
 
 double readUltrasoundEchoTime() {
     time_t currentTime = time(NULL);
