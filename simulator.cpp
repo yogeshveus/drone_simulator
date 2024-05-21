@@ -33,6 +33,11 @@ double readUltrasoundEchoTime() {
     time_t currentTime = time(NULL);
     double elapsedTime = difftime(currentTime, startTime);
     int index = (int)(elapsedTime / 3);
+    
+    if(index>=num_points)
+    {
+        index=num_points-1;
+    }
     return predefinedEchoTimes[index];
 }
 
@@ -44,6 +49,11 @@ double readLatitude() {
     time_t currentTime = time(NULL);
     double elapsedTime = difftime(currentTime, startTime);
     int index = (int)(elapsedTime / 3);
+   
+    if(index>=num_points)
+    {
+        index=num_points-1;
+    }
     return predefinedEchoLatitude[index];
 }
 
