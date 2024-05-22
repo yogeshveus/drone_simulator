@@ -3,7 +3,7 @@ from curve_to_coordinates_ import plot as c2c
 
 np.set_printoptions(threshold=np.inf)
 
-num_points = 20
+num_points = 2000
 total_length = 3000
 total_height = 1000
 lowest_height_of_path = 700
@@ -47,6 +47,10 @@ def generate_coords(image_path, topology_path, num_points):
     print(y_pts)
 
     with open('data.cpp', 'w') as file:
-        file.write(f'const int num_points = {num_points};\nconst double x[num_points] = {as_cpp_array(x_pts)};\nconst double y[num_points] = {as_cpp_array(y_pts)};' )
+        file.write(f'const int num_points = {num_points};\n')
+        file.write(f'const float distance_step = {total_length / num_points};\n')
+        file.write(F'const double x[num_points] = {as_cpp_array(x_pts)};\nconst double y[num_points] = {as_cpp_array(y_pts)};\n' )
+    
+    # c2c.plot_curve(x_pts, y_pts)
 
 generate_coords('Data/Images/img1.png', 'Data/Topologies/city1.csv', num_points)
