@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include "data.cpp"
 
+int NUMBER_OF_BUILDINGS = 0;
+
 time_t startTime;
 bool flag = false;
 float botSpeed;
