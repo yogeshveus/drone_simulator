@@ -6,16 +6,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "../data.cpp"
 
 #define FIFO_NAME "american_maid"
-
-int data[][2] = {
-    {10, 20},
-    {11, 34},
-    {12, 14},
-    {13, 42},
-    {14, 91}
-};
 
 int main(void)
 {
@@ -28,8 +21,8 @@ int main(void)
     fd = open(FIFO_NAME, O_WRONLY);
     printf("got a reader--type some stuff\n");
 
-    for (int i = 0; i < sizeof(data) / sizeof(data[0]); i++) {
-        sprintf(s, "%d %d\n", data[i][0], data[i][1]);
+    for (int i = 0; i < sizeof(x) / sizeof(double); i++) {
+        sprintf(s, "%f %f\n", x[i], y[i]);
         if ((num = write(fd, s, strlen(s))) == -1)
             perror("write");
         else
