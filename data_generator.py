@@ -3,7 +3,9 @@ from curve_to_coordinates_ import plot as c2c
 
 np.set_printoptions(threshold=np.inf)
 
-num_points = 2000
+speed_of_sound = 343.2
+
+num_points = 20
 total_length = 3000
 total_height = 1000
 lowest_height_of_path = 700
@@ -44,6 +46,10 @@ def generate_coords(image_path, topology_path, num_points):
 
     print(topology)
     print(indices)
+    print(y_pts)
+
+    y_pts *= 2/speed_of_sound
+
     print(y_pts)
 
     with open('data.cpp', 'w') as file:
