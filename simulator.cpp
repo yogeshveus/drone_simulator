@@ -1,66 +1,54 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "data.cpp"
 
-#define ARRAY_SIZE 10
+int NUMBER_OF_BUILDINGS = 0;
 
 time_t startTime;
 bool flag = false;
+float botSpeed;
 
 void setupSensors() {
-    printf("Sensors setup.\n");
+    // printf("Sensors setup.\n");
     startTime = time(NULL);
     flag = true;
 }
 
-void setBotSpeed(int speed) {
+void setBotSpeed(float speed) {
     if (!flag) {
         printf("Error: Sensors not set up. Call setupSensors() first.\n");
         return;
     }
-    printf("Bot speed set to %d.\n", speed);
+    // printf("Bot speed set to %d.\n", speed);
+    botSpeed = speed;
 }
 
 const double *predefinedEchoTimes = y;
 const double *predefinedEchoLatitude = x;
 
-double readUltrasoundEchoTime() {
+int calculateIndex(){
     if (!flag) {
         printf("Error: Sensors not set up. Call setupSensors() first.\n");
         return 0;
     }
     time_t currentTime = time(NULL);
     double elapsedTime = difftime(currentTime, startTime);
-    int index = (int)(elapsedTime / 3);
-    
+    int index = (int)(elapsedTime * botSpeed / distance_step);    
     if(index>=num_points)
     {
         index=num_points-1;
     }
-    return predefinedEchoTimes[index];
+    return index;
+}
+
+double readUltrasoundEchoTime() {
+    double echoTime = predefinedEchoTimes[calculateIndex()];
+    sleep(echoTime);
+    return echoTime;
 }
 
 double readLatitude() {
-    if (!flag) {
-        printf("Error: Sensors not set up. Call setupSensors() first.\n");
-        return 0;
-    }
-    time_t currentTime = time(NULL);
-    double elapsedTime = difftime(currentTime, startTime);
-    int index = (int)(elapsedTime / 3);
-   
-    if(index>=num_points)
-    {
-        index=num_points-1;
-    }
-    return predefinedEchoLatitude[index];
-}
-
-double readLongitude(){
-    if (!flag) {
-        printf("Error: Sensors not set up. Call setupSensors() first.\n");
-        return 0;
-    }
-    return 0;
+    return predefinedEchoLatitude[calculateIndex()];
 }
