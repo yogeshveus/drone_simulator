@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "data.cpp"
 
 time_t startTime;
@@ -41,7 +42,9 @@ int calculateIndex(){
 }
 
 double readUltrasoundEchoTime() {
-    return predefinedEchoTimes[calculateIndex()];
+    double echoTime = predefinedEchoTimes[calculateIndex()];
+    sleep(echoTime);
+    return echoTime;
 }
 
 double readLatitude() {

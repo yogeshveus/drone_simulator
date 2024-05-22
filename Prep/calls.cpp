@@ -1,9 +1,8 @@
 #include "../simulator.cpp"
 #include <stdio.h> // Not allowed in submissions
-#include <unistd.h>
 
 
-#define DRONE_SPEED 400
+#define DRONE_SPEED 40
 
 void loop() {
     printf("EchoTime Latitude Longitude\n");
@@ -14,7 +13,7 @@ void loop() {
         // unsigned long int lon = readLongitude();
         // printf("%u %lu %lu\n", echo_time, lat, lon);
         printf("%u %lu\n", echo_time, lat);
-        sleep(2);
+        // sleep(2);
     }
 }
 
