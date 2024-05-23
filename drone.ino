@@ -1,12 +1,15 @@
 #include "simulator.cpp"
 
+// void setupSensors()
+// void setBotSpeed(float speed) m/s
+// Total distance = 3km
+// Maximum height reached by the drone = 1km
+// double readUltrasoundEchoTime() - blocking function
+// double readLatitude() - instantaneous function
+// int NUMBER_OF_BUILDINGS
+
 void loop() {
-    unsigned int echo_time = readUltrasoundEchoTime();
-    unsigned long int lat = readLatitude();
-    printf("%u %lu\n", echo_time, lat);
 }
 
 void setup() {
-    setupSensors();
-    setBotSpeed(40);
 }
