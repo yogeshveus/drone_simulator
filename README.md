@@ -12,6 +12,8 @@ And all of these should be done, while making as few invocations to the ultrasou
 
 ![image](https://github.com/JustTheCoolest/Atom_Arduino_Drone_Simulator/assets/74148176/823cde4c-d41f-40ee-930f-4040c953c876)
 
+*HINT (Don't open before trying to solve)* : [This is how the flight path looks like to the drone when flying through the buildings.](https://github.com/JustTheCoolest/Atom_Arduino_Drone_Simulator/blob/main/Data/HINT.jpg)
+
 ## Who is this for?
 
 This simulator serves as an introductory challenge to those who want to get into robot programming. The challenge incorporates aspects of robotics such as being unable to run instantaneous tests in the real world, having to deal with imperfect sensor data, etc.
