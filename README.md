@@ -1,5 +1,7 @@
 # Arduino - Drone Simulator
 
+This project was made at [Atom Robotics](https://atomrobotics.github.io/), VIT Chennai
+
 ## Problem Statement
 
 This simulator simulates the programming environment for what would be the drone's onboard computer. The drone is flying over a city with buildings. It has with it, an ultrasound sensor, facing the ground. The ultrasound sensor can be invoked at any time to know the echo time from the ground right below the drone. Using some basic physics and maths, this can be used to gain information on the topology (buildings) over which the drone is flying. There are also sensors on the drone that allow it to find its position. The flight path is determined by a piece of software that has already been written and is not under our control. Our task is to use the data available to us, to calculate these in real-time:
